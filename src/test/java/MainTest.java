@@ -22,7 +22,7 @@ public class MainTest {
     }
 
     @Test
-    public void testSelenium(){
+    public void testSelenium() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","/home/vitat/Downloads/chromedriver");
         //java.lang.IllegalStateException: The path to the driver executable must be set by the
         // webdriver.chrome.driver system property; for more information,
@@ -32,20 +32,30 @@ public class MainTest {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://google.com");
-        System.out.println(driver.getTitle()); // => "Google"
+        /*System.out.println(driver.getTitle()); // => "Google"
 
-        driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);*/
 
         WebElement searchBox = driver.findElement(By.name("q"));
         WebElement searchButton = driver.findElement(By.name("btnK"));
 
         searchBox.sendKeys("Selenium");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+       // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        Thread.sleep(1000);
         searchButton.click();
+        //без ввода новой переменной не работает...
+        WebElement searchBox1 = driver.findElement(By.name("q"));
 
-        searchBox.findElements(By.name("q"));
-
-        //searchButton.getAttribute("value"); // => "Selenium"
+        //searchBox = (WebElement) driver.findElements(By.name("q"));
+        /* Error org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=99.0.4844.51)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+*/
+       Assert.assertEquals(searchBox1.getAttribute("value"), "Selenium");
+        System.out.println(searchBox1.getAttribute("value"));
+       //        System.out.println(searchBox.getAttribute("//input[@class=\"gLFyf gsfi\"][@value]"));
+      //  searchButton.getAttribute("value"); // => "Selenium"
 
         driver.quit();
     }
