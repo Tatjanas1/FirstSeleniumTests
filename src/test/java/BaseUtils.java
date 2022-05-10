@@ -1,4 +1,4 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -20,7 +20,7 @@ public class BaseUtils {
             } catch (IOException ignore) {}
 
             if (!remoteWebDriver) {
-                WebDriverManager.chromedriver().setup();
+            //    WebDriverManager.chromedriver().setup();
                 //WebDriverManager.firefoxdriver().setup();
             }
         }

@@ -12,6 +12,8 @@ import java.awt.event.KeyEvent;
 public class EdwardTest extends BaseUtils{
     WebDriver driver = new ChromeDriver();
 
+/*
+
     @BeforeMethod
     public void Base() {
         driver.get("https://www.google.com/");
@@ -33,7 +35,7 @@ public class EdwardTest extends BaseUtils{
     @AfterMethod
     void Close(){
         driver.close();
-    }
+    }*/
 }
 
 
